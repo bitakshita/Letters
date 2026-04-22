@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Story of Us</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       AMBIENT LAYER
+  ═══════════════════════════════════════ -->
+  <div id="starfield" aria-hidden="true"></div>
+  <div id="nebula" aria-hidden="true"></div>
+
+  <div id="moon" aria-hidden="true">
+    <div class="moon-crater c1"></div>
+    <div class="moon-crater c2"></div>
+    <div class="moon-crater c3"></div>
+    <div class="moon-glow"></div>
+  </div>
+
+  <div id="particles" aria-hidden="true"></div>
+
+
+  <!-- ═══════════════════════════════════════
+       COVER PAGE
+  ═══════════════════════════════════════ -->
+  <section id="cover" role="main" aria-label="Book cover">
+
+    <div class="cover-scene">
+      <div class="book-wrap" id="bookWrap">
+
+        <!-- Spine -->
+        <div class="book-spine">
+          <span class="spine-text">The Story of Us</span>
+        </div>
+
+        <!-- Front Cover -->
+        <div class="book-front" id="bookFront">
+          <div class="cover-texture"></div>
+          <div class="cover-border"></div>
+
+          <div class="cover-content">
+            <div class="cover-ornament top">
+              <i class="fa-solid fa-heart"></i>
+              <span class="orn-line"></span>
+              <i class="fa-solid fa-star"></i>
+              <span class="orn-line"></span>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <p class="cover-eyebrow">a love story in</p>
+            <h1 class="cover-title">The Story<br/><em>of Us</em></h1>
+            <p class="cover-subtitle">fifteen letters from the heart</p>
+
+            <div class="cover-seal">
+              <div class="seal-ring">
+                <i class="fa-solid fa-infinity"></i>
+              </div>
+            </div>
+
+            <div class="cover-ornament bottom">
+              <i class="fa-solid fa-heart"></i>
+              <span class="orn-line"></span>
+              <i class="fa-solid fa-star"></i>
+              <span class="orn-line"></span>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+
+          <div class="open-cta" id="openBtn" onclick="openBook()" role="button" tabindex="0" aria-label="Open the book">
+            <span class="cta-text">Open Our Book</span>
+            <i class="fa-solid fa-chevron-right cta-arrow"></i>
+          </div>
+        </div>
+
+      </div><!-- /book-wrap -->
+
+      <div class="cover-tagline">
+        <i class="fa-solid fa-moon"></i>
+        <span>written in starlight &amp; sealed with love</span>
+        <i class="fa-solid fa-moon fa-flip-horizontal"></i>
+      </div>
+    </div>
+
+  </section><!-- /cover -->
+
+
+  <!-- ═══════════════════════════════════════
+       MAIN APP — CHAPTER SELECT
+  ═══════════════════════════════════════ -->
+  <section id="app" aria-label="Chapter selection" hidden>
+
+    <header class="app-header">
+      <div class="header-left">
+        <button class="back-to-cover" id="backBtn" onclick="goToCover()" aria-label="Return to cover">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Our Book</span>
+        </button>
+      </div>
+      <div class="header-center">
+        <h2 class="app-title">The Story of Us</h2>
+        <p class="app-subtitle">
+          <span id="progressText">Chapter 1 of 15 unlocked</span>
+        </p>
+      </div>
+      <div class="header-right">
+        <div class="progress-ring-wrap" aria-label="Progress">
+          <svg class="progress-ring" viewBox="0 0 48 48">
+            <circle class="ring-bg" cx="24" cy="24" r="20"/>
+            <circle class="ring-fill" cx="24" cy="24" r="20" id="ringFill"/>
+          </svg>
+          <span class="ring-num" id="ringNum">1</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="chapters-container">
+      <div class="chapters-grid" id="chaptersGrid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <i class="fa-solid fa-heart footer-heart"></i>
+      <span>Each day , one letter will be unlocked</span>
+      <i class="fa-solid fa-heart footer-heart"></i>
+    </footer>
+
+  </section><!-- /app -->
+
+
+  <!-- ═══════════════════════════════════════
+       LETTER MODAL
+  ═══════════════════════════════════════ -->
+  <div id="modalOverlay" aria-modal="true" role="dialog" aria-label="Love letter" aria-hidden="true">
+
+    <div class="modal-book" id="modalBook">
+
+      <!-- Book page left (decorative) -->
+      <div class="page-left" id="pageLeft" aria-hidden="true">
+        <div class="page-left-inner">
+          <div class="page-number-left" id="pageNumLeft"></div>
+          <div class="page-illustration" id="pageIllustration">
+            <!-- Rendered by JS: SVG / emoji art -->
+          </div>
+          <div class="page-quote" id="pageQuote"></div>
+        </div>
+      </div>
+
+      <!-- Book page right (letter) -->
+      <div class="page-right" id="pageRight">
+        <div class="page-right-inner">
+
+          <div class="letter-header">
+            <div class="letter-chapter-tag" id="letterChapterTag"></div>
+            <h2 class="letter-title" id="letterTitle"></h2>
+            <div class="letter-date" id="letterDate"></div>
+          </div>
+
+          <div class="letter-body" id="letterBody">
+            <!-- Injected by JS -->
+          </div>
+
+          <div class="letter-media" id="letterMedia">
+            <!-- Photo + Video placeholders -->
+          </div>
+
+          <div class="letter-signature" id="letterSignature"></div>
+
+          <div class="page-number-right" id="pageNumRight"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="modal-close" id="modalClose" onclick="closeModal()" aria-label="Close letter">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-nav">
+        <button class="nav-prev" id="navPrev" onclick="navigate(-1)" aria-label="Previous chapter">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="nav-dots" id="navDots"></div>
+        <button class="nav-next" id="navNext" onclick="navigate(1)" aria-label="Next chapter">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+    </div><!-- /modal-book -->
+
+  </div><!-- /modal-overlay -->
+
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
