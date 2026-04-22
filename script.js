@@ -5,6 +5,42 @@
 'use strict';
 
 /* ── CHAPTER DATA ── */
+/*
+  HOW TO ADD PHOTOS & VIDEOS:
+  ─────────────────────────────────────────────
+  Each chapter has two fields:
+
+    photo: 'path/to/your/image.jpg'
+      → Put your image file in an "images/" folder next to index.html
+      → Example: 'images/chapter1.jpg'
+      → Supports: .jpg  .jpeg  .png  .webp  .gif
+      → Leave as '' to show a placeholder
+
+    video: 'path/to/your/video.mp4'
+      → Put your video file in a "videos/" folder next to index.html
+      → Example: 'videos/chapter1.mp4'
+      → Supports: .mp4  .webm
+      → OR paste a YouTube embed URL:
+         'https://www.youtube.com/embed/VIDEO_ID'
+      → OR paste a Google Drive embed URL:
+         'https://drive.google.com/file/d/FILE_ID/preview'
+      → Leave as '' to hide the video section
+
+  FOLDER STRUCTURE:
+  ─────────────────────────────────────────────
+    your-project/
+    ├── index.html
+    ├── style.css
+    ├── script.js
+    ├── images/
+    │   ├── chapter1.jpg
+    │   ├── chapter2.jpg
+    │   └── ...
+    └── videos/
+        ├── chapter1.mp4
+        └── ...
+*/
+
 const CHAPTERS = [
   {
     num: 'I',
@@ -15,14 +51,17 @@ const CHAPTERS = [
     art: 'stars',
     salutation: 'My Manuuu,',
     paragraphs: [
-      { text: 'Miss Mansi Saini , natkhat member of Cybernetics (IT Society) being the CS and Head of coding club , i always use to see you as a cutie and chulbuli si pyaari bachi ' ,dropCap: true },
+      { text: 'Miss Mansi Saini , natkhat member of Cybernetics (IT Society) being the CS and Head of coding club , i always use to see you as a cutie and chulbuli si pyaari bachi ', dropCap: true },
       { text: 'I always use to thought that this pyaari bachi who use to smile everytime , seems happy , use to crack joke has something deep inside her which is hidden inside her heart' },
       { text: 'But i can sense that purity, that aapna pan and that kid inside you , i always and always love that kid , idk how but i felt so connected with you.' },
       { text: 'We never know , atleast not at that moment that we will be like this ,but i love how everything turn out' }
     ],
     signature: 'forever yours ♥',
-    photo: 'Maybe the First picture together!',
-    video: 'The moment you first smiled at me'
+    // ↓↓↓ ADD YOUR FILES HERE ↓↓↓
+    photo: './assests/photo1.jpeg',           // e.g. 'images/chapter1.jpg'
+    photoCaption: 'Maybe the First picture together!',
+    video: './assests/video1.mp4',           // e.g. 'videos/chapter1.mp4'
+    videoCaption: 'The moment you first smiled at me'
   },
   // {
   //   num: 'II',
@@ -34,13 +73,15 @@ const CHAPTERS = [
   //   salutation: 'My love,',
   //   paragraphs: [
   //     { text: 'The best kind of learning is the kind that doesn\'t feel like study at all. Learning you was like that — effortless, unhurried, a slow accumulation of the most important knowledge I have ever gathered.', dropCap: true },
-  //     { text: 'I learned that you grew quiet when something moved you deeply, that your silences were not empty but full — full of things you were deciding whether to trust me with. And one by one, you did. One by one, you opened those quiet rooms and let me in.' },
+  //     { text: 'I learned that you grew quiet when something moved you deeply, that your silences were not empty but full — full of things you were deciding whether to trust me with. And one by one, you did.' },
   //     { text: 'I learned the landscape of your face: the small crease between your brows when you are concentrating, the way your eyes change shade with your mood like weather, the particular smile you save for moments when you think no one is looking. I was always looking.' },
   //     { text: 'I am still learning you. I think I will be learning you for the rest of my life, and I cannot imagine a better education.' }
   //   ],
   //   signature: 'your devoted student ♥',
-  //   photo: 'The little things I noticed about you',
-  //   video: 'Our first real conversation, remembered'
+  //   photo: '',
+  //   photoCaption: 'The little things I noticed about you',
+  //   video: '',
+  //   videoCaption: 'Our first real conversation, remembered'
   // },
   // {
   //   num: 'III',
@@ -53,12 +94,14 @@ const CHAPTERS = [
   //   paragraphs: [
   //     { text: 'We never planned to walk so far. We would say "just around the block" and find ourselves, an hour later, in some neighbourhood neither of us knew, pointing at houses and inventing lives for the people inside.', dropCap: true },
   //     { text: 'You talked about things you had never said aloud before, and I understood then that there are thoughts which need movement to arrive — ideas too big to sit still, truths that can only be spoken while the world is sliding past.' },
-  //     { text: 'Once, it started to rain, and we had no umbrella, and instead of running we just kept walking. Just kept talking. The rain was warm and neither of us wanted to go inside, back to the separate lives we were slowly choosing not to live separately anymore.' },
+  //     { text: 'Once, it started to rain, and we had no umbrella, and instead of running we just kept walking. Just kept talking. The rain was warm and neither of us wanted to go inside.' },
   //     { text: 'All my favourite cities are the ones I have walked through with you. All my favourite moments are the ones where we didn\'t know where we were going and it didn\'t matter at all.' }
   //   ],
   //   signature: 'always walking beside you ♥',
-  //   photo: 'Streets we made our own',
-  //   video: 'An evening walk, captured'
+  //   photo: '',
+  //   photoCaption: 'Streets we made our own',
+  //   video: '',
+  //   videoCaption: 'An evening walk, captured'
   // },
   // {
   //   num: 'IV',
@@ -71,12 +114,14 @@ const CHAPTERS = [
   //   paragraphs: [
   //     { text: 'We have built, between us, an entire vocabulary. Words that mean twelve different things depending on how they are said. Glances that carry full sentences. A particular way you raise one eyebrow that means "I told you so" and also "I love you" simultaneously.', dropCap: true },
   //     { text: 'There are the in-jokes so layered they have become mythology — references to references to references, the original incident now so buried in retelling that we can barely remember it, only that it made us laugh until we couldn\'t breathe.' },
-  //     { text: 'In a crowded room, a single look from you can say: are you okay? I see you. I know this is a lot. Let\'s leave soon. You\'re doing brilliantly. I\'m here. All of that, in a look. You speak fluent Me and I speak fluent You.' },
+  //     { text: 'In a crowded room, a single look from you can say: are you okay? I see you. I know this is a lot. Let\'s leave soon. You\'re doing brilliantly. I\'m here. All of that, in a look.' },
   //     { text: 'This is the intimacy that can\'t be faked or forced — the language that only grows from time and attention and choosing each other enough times that you begin to understand each other\'s grammar.' }
   //   ],
   //   signature: 'fluent in you ♥',
-  //   photo: 'A look that said everything',
-  //   video: 'Our greatest hits of laughter'
+  //   photo: '',
+  //   photoCaption: 'A look that said everything',
+  //   video: '',
+  //   videoCaption: 'Our greatest hits of laughter'
   // },
   // {
   //   num: 'V',
@@ -93,8 +138,10 @@ const CHAPTERS = [
   //     { text: 'I choose a rainy day with you over any perfect day alone. I choose ordinary time with you over extraordinary time with anyone else. This is the truest thing I know.' }
   //   ],
   //   signature: 'your warmest shelter ♥',
-  //   photo: 'Rain on the window, you beside me',
-  //   video: 'The playlist of our grey afternoons'
+  //   photo: '',
+  //   photoCaption: 'Rain on the window, you beside me',
+  //   video: '',
+  //   videoCaption: 'The playlist of our grey afternoons'
   // },
   // {
   //   num: 'VI',
@@ -107,12 +154,14 @@ const CHAPTERS = [
   //   paragraphs: [
   //     { text: 'There was a time when I was not easy to love. I want to name it plainly, without disguise: I was difficult, and frightened, and I did not always make it easy for you to stay.', dropCap: true },
   //     { text: 'And you stayed. Not with a performance of patience, not with martyrdom, but with the quiet, consistent choice to be present. You sat with me in the rooms I tried to hide and you didn\'t recoil from what you found there.' },
-  //     { text: 'I have tried to find the words for what that meant. I have drafted this paragraph a hundred times. What I keep arriving at is this: you showed me that love, real love, is not conditional on my being at my best. That it holds in the hard weather.' },
+  //     { text: 'I have tried to find the words for what that meant. What I keep arriving at is this: you showed me that love, real love, is not conditional on my being at my best. That it holds in the hard weather.' },
   //     { text: 'I don\'t take it for granted. Not for a single day. The gift of being fully known and fully loved anyway — I carry it with me everywhere. It made me braver than I would have been alone.' }
   //   ],
   //   signature: 'grateful beyond all words ♥',
-  //   photo: 'The light we found after the dark',
-  //   video: 'Our song for hard days'
+  //   photo: '',
+  //   photoCaption: 'The light we found after the dark',
+  //   video: '',
+  //   videoCaption: 'Our song for hard days'
   // },
   // {
   //   num: 'VII',
@@ -124,13 +173,15 @@ const CHAPTERS = [
   //   salutation: 'My fellow explorer,',
   //   paragraphs: [
   //     { text: 'We have been spectacularly, joyfully lost together. We have taken wrong trains and eaten at restaurants we found by accident and slept in rooms that smelled of old wood and discovered that the wrong way is sometimes the right way.', dropCap: true },
-  //     { text: 'You are the best possible companion for the unexpected. When things go sideways — and with us, things do go sideways — you do not catastrophise. You look at me with those eyes and somehow, somehow, the disaster becomes an anecdote we\'ll be telling for years.' },
-  //     { text: 'My favourite version of every city I have visited is the version I saw with you. Not because the city changed, but because the way you look at things teaches me to look differently — to notice the colour of a doorway, the expression of a stranger, the improbable beauty of ordinary things.' },
+  //     { text: 'You are the best possible companion for the unexpected. When things go sideways — and with us, things do go sideways — you do not catastrophise. You look at me with those eyes and somehow the disaster becomes an anecdote we\'ll be telling for years.' },
+  //     { text: 'My favourite version of every city I have visited is the version I saw with you. Not because the city changed, but because the way you look at things teaches me to look differently.' },
   //     { text: 'There are places I want to take you still. There are horizons I have been saving, knowing they\'ll be better with you in the frame.' }
   //   ],
   //   signature: 'your navigator and companion ♥',
-  //   photo: 'Somewhere we got beautifully lost',
-  //   video: 'Our best adventure, in moving pictures'
+  //   photo: '',
+  //   photoCaption: 'Somewhere we got beautifully lost',
+  //   video: '',
+  //   videoCaption: 'Our best adventure, in moving pictures'
   // },
   // {
   //   num: 'VIII',
@@ -147,8 +198,10 @@ const CHAPTERS = [
   //     { text: 'I want a thousand more of these evenings. I want to grow old in exactly this kind of comfortable quiet, with you across from me, reading something, unbothered and beloved.' }
   //   ],
   //   signature: 'your peaceful harbor ♥',
-  //   photo: 'An evening soft as candlelight',
-  //   video: 'The songs of our quiet hours'
+  //   photo: '',
+  //   photoCaption: 'An evening soft as candlelight',
+  //   video: '',
+  //   videoCaption: 'The songs of our quiet hours'
   // },
   // {
   //   num: 'IX',
@@ -165,8 +218,10 @@ const CHAPTERS = [
   //     { text: 'I am a better person for being loved by you. I do not say this to flatter you. I say it because it is a factual account of what has happened to me since you arrived.' }
   //   ],
   //   signature: 'changed, by you, for the better ♥',
-  //   photo: 'A small gesture that meant everything',
-  //   video: 'The thousand ways you show up'
+  //   photo: '',
+  //   photoCaption: 'A small gesture that meant everything',
+  //   video: '',
+  //   videoCaption: 'The thousand ways you show up'
   // },
   // {
   //   num: 'X',
@@ -183,8 +238,10 @@ const CHAPTERS = [
   //     { text: 'Thank you for letting me into that. Thank you for introducing me to the village it takes. Thank you for making me feel, slowly and surely, like I was always supposed to be part of it.' }
   //   ],
   //   signature: 'part of your story now ♥',
-  //   photo: 'All of us together, chaotic and perfect',
-  //   video: 'A gathering I never want to forget'
+  //   photo: '',
+  //   photoCaption: 'All of us together, chaotic and perfect',
+  //   video: '',
+  //   videoCaption: 'A gathering I never want to forget'
   // },
   // {
   //   num: 'XI',
@@ -201,8 +258,10 @@ const CHAPTERS = [
   //     { text: 'This is the one I finally finished. I am giving it to you now, a little late, but entirely true. You were worth every draft. You are worth every word I have ever struggled to say.' }
   //   ],
   //   signature: 'finally finding the words ♥',
-  //   photo: 'Pages and pages, written for you',
-  //   video: 'A reading — my voice, for your ears only'
+  //   photo: '',
+  //   photoCaption: 'Pages and pages, written for you',
+  //   video: '',
+  //   videoCaption: 'A reading — my voice, for your ears only'
   // },
   // {
   //   num: 'XII',
@@ -219,8 +278,10 @@ const CHAPTERS = [
   //     { text: 'I want to mark them all. I want a record of every small brave choice we made that added up, without our quite realising it, to this life that I would not trade for any other.' }
   //   ],
   //   signature: 'proud of everything we\'ve built ♥',
-  //   photo: 'The milestones, golden in memory',
-  //   video: 'A timeline of us, in pictures'
+  //   photo: '',
+  //   photoCaption: 'The milestones, golden in memory',
+  //   video: '',
+  //   videoCaption: 'A timeline of us, in pictures'
   // },
   // {
   //   num: 'XIII',
@@ -237,8 +298,10 @@ const CHAPTERS = [
   //     { text: 'I do not know exactly what the future holds. But I know you are in it. And this is not uncertainty — it is the most grounded thing I know.' }
   //   ],
   //   signature: 'dreaming beside you ♥',
-  //   photo: 'A view we haven\'t seen yet, but will',
-  //   video: 'A vision of our favourite future'
+  //   photo: '',
+  //   photoCaption: 'A view we haven\'t seen yet, but will',
+  //   video: '',
+  //   videoCaption: 'A vision of our favourite future'
   // },
   // {
   //   num: 'XIV',
@@ -255,8 +318,10 @@ const CHAPTERS = [
   //     { text: 'I carry the gift of your love with me everywhere. It has changed the way I walk through the world. I am not the same person I was before you — I am more, and better, and I owe you more than I can say. So I say it again: thank you. Thank you. Thank you.' }
   //   ],
   //   signature: 'thankful in ways words can\'t hold ♥',
-  //   photo: 'Gratitude, in every frame I have of you',
-  //   video: 'Everything I want to thank you for'
+  //   photo: '',
+  //   photoCaption: 'Gratitude, in every frame I have of you',
+  //   video: '',
+  //   videoCaption: 'Everything I want to thank you for'
   // },
   // {
   //   num: 'XV',
@@ -273,16 +338,18 @@ const CHAPTERS = [
   //     { text: 'I love you. I loved you then, when I didn\'t yet know I was loving you. I love you now, with everything I have learned. I will love you in every chapter still to come, in all the forms that love takes as we grow and change and carry each other forward.\n\nAlways. And forever.' }
   //   ],
   //   signature: 'yours — completely, always ♥',
-  //   photo: 'All of it. Everything. Us.',
-  //   video: 'Our story, from the beginning'
+  //   photo: '',
+  //   photoCaption: 'All of it. Everything. Us.',
+  //   video: '',
+  //   videoCaption: 'Our story, from the beginning'
   // }
 ];
 
 /* ── STATE ── */
-let unlockedCount = 1;   // only first chapter unlocked initially
-let readChapters  = new Set();
+let unlockedCount  = 1;
+let readChapters   = new Set();
 let currentChapter = 0;
-let isModalOpen   = false;
+let isModalOpen    = false;
 
 /* ══════════════════════════════════════
    AMBIENT SETUP
@@ -348,9 +415,7 @@ function goToCover() {
   const app   = document.getElementById('app');
   app.setAttribute('hidden', '');
   cover.removeAttribute('hidden');
-  requestAnimationFrame(() => {
-    cover.classList.remove('hidden');
-  });
+  requestAnimationFrame(() => cover.classList.remove('hidden'));
 }
 
 /* ══════════════════════════════════════
@@ -361,12 +426,10 @@ function renderGrid() {
   const grid = document.getElementById('chaptersGrid');
   if (!grid) return;
   grid.innerHTML = '';
-
   CHAPTERS.forEach((ch, i) => {
     const unlocked = i < unlockedCount;
     const read     = readChapters.has(i);
-    const card     = buildCard(ch, i, unlocked, read);
-    grid.appendChild(card);
+    grid.appendChild(buildCard(ch, i, unlocked, read));
   });
 }
 
@@ -375,13 +438,11 @@ function buildCard(ch, i, unlocked, read) {
   card.className = 'chapter-card' +
     (unlocked ? ' unlocked' : ' locked') +
     (read     ? ' read'     : '');
-
   card.setAttribute('aria-label',
     unlocked
       ? `Chapter ${ch.num}: ${ch.name}${read ? ' (read)' : ' (unread)'}`
       : `Chapter ${ch.num}: locked`
   );
-
   if (unlocked) {
     card.tabIndex = 0;
     card.addEventListener('click', () => openChapter(i));
@@ -389,13 +450,14 @@ function buildCard(ch, i, unlocked, read) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openChapter(i); }
     });
   }
-
   card.innerHTML = `
     <div class="envelope-wrap">
       <div class="envelope-body">
         <div class="envelope-flap"></div>
         <div class="env-seal">
-          ${unlocked ? `<i class="fa-solid fa-${read ? 'envelope-open' : 'heart'}"></i>` : '<i class="fa-solid fa-lock"></i>'}
+          ${unlocked
+            ? `<i class="fa-solid fa-${read ? 'envelope-open' : 'heart'}"></i>`
+            : '<i class="fa-solid fa-lock"></i>'}
         </div>
         ${!unlocked ? '<div class="lock-overlay"><i class="fa-solid fa-lock"></i></div>' : ''}
         ${read ? '<div class="read-badge"><i class="fa-solid fa-check"></i></div>' : ''}
@@ -406,7 +468,6 @@ function buildCard(ch, i, unlocked, read) {
       <div class="chapter-name">${unlocked ? ch.name : '— locked —'}</div>
     </div>
   `;
-
   return card;
 }
 
@@ -414,11 +475,9 @@ function updateProgress() {
   const total = CHAPTERS.length;
   const pct   = unlockedCount / total;
   const circ  = 2 * Math.PI * 20;
-
-  const ring = document.getElementById('ringFill');
-  const num  = document.getElementById('ringNum');
-  const txt  = document.getElementById('progressText');
-
+  const ring  = document.getElementById('ringFill');
+  const num   = document.getElementById('ringNum');
+  const txt   = document.getElementById('progressText');
   if (ring) ring.style.strokeDashoffset = circ - pct * circ;
   if (num)  num.textContent = unlockedCount;
   if (txt)  txt.textContent = `Chapter ${unlockedCount} of ${total} unlocked`;
@@ -429,7 +488,7 @@ function updateProgress() {
 ══════════════════════════════════════ */
 
 function openChapter(index) {
-  if (index >= unlockedCount) return;   // locked guard
+  if (index >= unlockedCount) return;
   currentChapter = index;
   populateModal(index);
   const overlay = document.getElementById('modalOverlay');
@@ -438,7 +497,6 @@ function openChapter(index) {
   isModalOpen = true;
   document.body.style.overflow = 'hidden';
 
-  // Mark as read + unlock next
   if (!readChapters.has(index)) {
     readChapters.add(index);
     if (index + 1 < CHAPTERS.length && index + 1 >= unlockedCount) {
@@ -459,8 +517,7 @@ function closeModal() {
 
 function navigate(dir) {
   const next = currentChapter + dir;
-  if (next < 0 || next >= CHAPTERS.length) return;
-  if (next >= unlockedCount) return;
+  if (next < 0 || next >= CHAPTERS.length || next >= unlockedCount) return;
   currentChapter = next;
   populateModal(next);
   if (!readChapters.has(next)) {
@@ -480,17 +537,14 @@ function navigate(dir) {
 function populateModal(i) {
   const ch = CHAPTERS[i];
 
-  /* Left page */
-  document.getElementById('pageNumLeft').textContent = `— ${romanPage(i)} —`;
+  document.getElementById('pageNumLeft').textContent  = `— ${romanPage(i)} —`;
   document.getElementById('pageIllustration').innerHTML = buildIllustration(ch.art, ch.icon);
-  document.getElementById('pageQuote').innerHTML = `<p>${ch.quote}</p>`;
+  document.getElementById('pageQuote').innerHTML      = `<p>${ch.quote}</p>`;
 
-  /* Right page */
   document.getElementById('letterChapterTag').textContent = `Chapter ${ch.num}`;
-  document.getElementById('letterTitle').textContent = ch.name;
-  document.getElementById('letterDate').textContent = ch.date;
+  document.getElementById('letterTitle').textContent      = ch.name;
+  document.getElementById('letterDate').textContent       = ch.date;
 
-  /* Letter body */
   const body = document.getElementById('letterBody');
   body.innerHTML = `<span class="salutation">${ch.salutation}</span>`;
   ch.paragraphs.forEach((p, pi) => {
@@ -500,53 +554,115 @@ function populateModal(i) {
     body.appendChild(para);
   });
 
-  /* Media */
-  document.getElementById('letterMedia').innerHTML = buildMedia(ch);
-
-  /* Signature */
+  document.getElementById('letterMedia').innerHTML    = buildMedia(ch);
   document.getElementById('letterSignature').textContent = ch.signature;
   document.getElementById('pageNumRight').textContent = `${i * 2 + 2}`;
 
-  /* Nav dots */
   buildDots(i);
-
-  /* Nav buttons */
   document.getElementById('navPrev').disabled = i === 0;
   document.getElementById('navNext').disabled = (i + 1 >= unlockedCount) || (i === CHAPTERS.length - 1);
 }
 
+/* ══════════════════════════════════════
+   MEDIA BUILDER  ← MAIN CHANGE IS HERE
+══════════════════════════════════════ */
+
+function buildMedia(ch) {
+  let html = `<div class="media-divider"><i class="fa-solid fa-camera-retro"></i> memories</div>`;
+
+  /* ── PHOTO ── */
+  if (ch.photo && ch.photo.trim() !== '') {
+    /* Real image provided */
+    html += `
+      <div class="photo-frame" style="padding:0; background:none; border:none;">
+        <img
+          src="${ch.photo}"
+          alt="${ch.photoCaption || 'Our memory'}"
+          style="width:100%; height:100%; object-fit:cover; border-radius:4px; display:block;"
+          onerror="this.parentElement.innerHTML=\`
+            <div style='display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:0.5rem;color:rgba(100,70,20,0.5);font-style:italic;font-size:0.85rem;text-align:center;padding:1rem;'>
+              <i class='fa-regular fa-image' style='font-size:2rem;opacity:0.5;'></i>
+              <div>Image not found</div>
+              <div style='font-size:0.72rem;opacity:0.6;'>${ch.photo}</div>
+            </div>
+          \`"
+        />
+      </div>
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:0.78rem;color:rgba(100,70,20,0.45);text-align:center;margin-top:-0.4rem;">${ch.photoCaption || ''}</p>
+    `;
+  } else {
+    /* Placeholder */
+    html += `
+      <div class="photo-frame">
+        <i class="fa-regular fa-image photo-icon"></i>
+        <div>${ch.photoCaption || 'Add a photo for this chapter'}</div>
+        <div class="photo-hint">Set  photo: 'images/yourfile.jpg'  in CHAPTERS data</div>
+      </div>
+    `;
+  }
+
+  /* ── VIDEO ── */
+  if (ch.video && ch.video.trim() !== '') {
+    const isEmbed = ch.video.includes('youtube.com') || ch.video.includes('drive.google.com') || ch.video.includes('youtu.be');
+
+    if (isEmbed) {
+      /* YouTube / Drive iframe */
+      html += `
+        <div class="video-frame" style="padding:0; overflow:hidden;">
+          <iframe
+            src="${ch.video}"
+            title="${ch.videoCaption || 'Our video memory'}"
+            style="width:100%; height:100%; border:none; border-radius:4px;"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:0.78rem;color:rgba(100,70,20,0.45);text-align:center;margin-top:-0.4rem;">${ch.videoCaption || ''}</p>
+      `;
+    } else {
+      /* Local mp4 / webm */
+      html += `
+        <div class="video-frame" style="padding:0; overflow:hidden;">
+          <video
+            controls
+            style="width:100%; height:100%; object-fit:cover; border-radius:4px; display:block;"
+            onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;color:rgba(245,224,160,0.4);font-style:italic;font-size:0.85rem;\'>Video not found</div>'"
+          >
+            <source src="${ch.video}" type="${ch.video.endsWith('.webm') ? 'video/webm' : 'video/mp4'}">
+            Your browser does not support video.
+          </video>
+        </div>
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:0.78rem;color:rgba(100,70,20,0.45);text-align:center;margin-top:-0.4rem;">${ch.videoCaption || ''}</p>
+      `;
+    }
+  }
+  /* If video is empty, no video section shown at all — cleaner look */
+
+  return html;
+}
+
+/* ══════════════════════════════════════
+   NAV DOTS
+══════════════════════════════════════ */
+
 function buildDots(active) {
-  const wrap = document.getElementById('navDots');
+  const wrap    = document.getElementById('navDots');
   wrap.innerHTML = '';
   const visible = Math.min(unlockedCount, CHAPTERS.length);
   for (let i = 0; i < visible; i++) {
     const btn = document.createElement('button');
     btn.className = 'nav-dot' +
-      (i === active       ? ' active'   : '') +
+      (i === active ? ' active' : '') +
       (readChapters.has(i) && i !== active ? ' read-dot' : '');
     btn.setAttribute('aria-label', `Go to chapter ${i + 1}`);
-    btn.addEventListener('click', () => {
-      currentChapter = i;
-      populateModal(i);
-    });
+    btn.addEventListener('click', () => { currentChapter = i; populateModal(i); });
     wrap.appendChild(btn);
   }
 }
 
-function buildMedia(ch) {
-  return `
-    <div class="media-divider"><i class="fa-solid fa-camera-retro"></i> memories</div>
-    <div class="photo-frame">
-      <i class="fa-regular fa-image photo-icon"></i>
-      <div>${ch.photo}</div>
-      <div class="photo-hint">[ add your photograph here ]</div>
-    </div>
-    <div class="video-frame">
-      <div class="play-circle"><i class="fa-solid fa-play"></i></div>
-      <div class="video-caption">${ch.video}</div>
-    </div>
-  `;
-}
+/* ══════════════════════════════════════
+   ILLUSTRATIONS
+══════════════════════════════════════ */
 
 function buildIllustration(type, icon) {
   const svgs = {
@@ -617,27 +733,21 @@ function romanPage(i) {
 
 document.addEventListener('keydown', e => {
   if (!isModalOpen) return;
-  switch (e.key) {
-    case 'Escape':      closeModal();    break;
-    case 'ArrowRight':  navigate(1);     break;
-    case 'ArrowLeft':   navigate(-1);    break;
-  }
+  if (e.key === 'Escape')     closeModal();
+  if (e.key === 'ArrowRight') navigate(1);
+  if (e.key === 'ArrowLeft')  navigate(-1);
 });
 
 document.getElementById('modalOverlay').addEventListener('click', e => {
   if (e.target === e.currentTarget) closeModal();
 });
 
-/* bookWrap click → openBook */
 const bookWrap = document.getElementById('bookWrap');
 if (bookWrap) {
   bookWrap.addEventListener('click', openBook);
-  bookWrap.addEventListener('keydown', e => {
-    if (e.key === 'Enter') openBook();
-  });
+  bookWrap.addEventListener('keydown', e => { if (e.key === 'Enter') openBook(); });
 }
 
-/* openBtn keyboard */
 const openBtn = document.getElementById('openBtn');
 if (openBtn) {
   openBtn.addEventListener('keydown', e => {
