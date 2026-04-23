@@ -63,26 +63,28 @@ const CHAPTERS = [
     video: './assests/video1.mp4',           // e.g. 'videos/chapter1.mp4'
     videoCaption: 'The moment you first smiled at me'
   },
-  // {
-  //   num: 'II',
-  //   name: 'Learning You',
-  //   icon: '☽',
-  //   date: 'The weeks that followed',
-  //   quote: '"To love someone is to learn the song in their heart and sing it to them when they have forgotten the words."',
-  //   art: 'moon',
-  //   salutation: 'My love,',
-  //   paragraphs: [
-  //     { text: 'The best kind of learning is the kind that doesn\'t feel like study at all. Learning you was like that — effortless, unhurried, a slow accumulation of the most important knowledge I have ever gathered.', dropCap: true },
-  //     { text: 'I learned that you grew quiet when something moved you deeply, that your silences were not empty but full — full of things you were deciding whether to trust me with. And one by one, you did.' },
-  //     { text: 'I learned the landscape of your face: the small crease between your brows when you are concentrating, the way your eyes change shade with your mood like weather, the particular smile you save for moments when you think no one is looking. I was always looking.' },
-  //     { text: 'I am still learning you. I think I will be learning you for the rest of my life, and I cannot imagine a better education.' }
-  //   ],
-  //   signature: 'your devoted student ♥',
-  //   photo: '',
-  //   photoCaption: 'The little things I noticed about you',
-  //   video: '',
-  //   videoCaption: 'Our first real conversation, remembered'
-  // },
+  {
+    num: 'II',
+    name: 'Learning Together',
+    icon: '☽',
+    date: 'The month that followed',
+    quote: '"To love someone is to learn the song in their heart and sing it to them when they have forgotten the words."',
+    art: 'moon',
+    salutation: 'My Baby,',
+    paragraphs: [
+      { text: 'That month , after freshers , i.e. January , the turning point of our bond, that month started everything', dropCap: true },
+      { text: 'That sambhar ki trip was the first time we had ache se convo , and i was sitting on your lap , that was so comfortable and i never thought you feel lonely when shifted on middle seat in the jeep, that karoke movement' },
+      { text: 'That photo you clicked , theres a saying that if photo is clicked by someone who appreciate or love you , then the photo become much better, , remember my photo? ' },
+      { text: 'And the highlight of the month was we started working on the project , and i think that was the bestest decision i had take that time to sit with you guys , i learned , i built not only project but also the BOND with you '}
+    ],
+    signature: 'your Senior ♥',
+    photo: './assests/photo2.1.jpeg',
+    photoCaption: 'Our Photo together',
+    photo: './assests/photo2.1.jpeg',
+    photoCaption: 'Our Photo together',
+    video: './assests/video2.mp4',
+    videoCaption: 'That was fun!!!!!!!'
+  },
   // {
   //   num: 'III',
   //   name: 'The Long Walks',
