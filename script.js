@@ -85,8 +85,28 @@ const CHAPTERS = [
     video: './assests/video2.mp4',
     videoCaption: 'That was fun!!!!!!!'
   },
+  {
+    num: 'III',
+    name: 'Our Comfortness Increases',
+    icon: '♥',
+    date: 'Woven through all our days',
+    quote: '"Love creates its own dialect — one that can only be spoken between two people who have truly chosen each other."',
+    art: 'hearts',
+    salutation: 'My darling,',
+    paragraphs: [
+      { text: 'That Project gives us the bestest thing i.e. the bond and comfortness we started feeling around each other , the way you treats me was something else. ', dropCap: true },
+      { text: 'You always give me that respect and that affection ; that affection make me feel that i have earned something in my life , i always and always appreciate your skills you have.' },
+      { text: 'Each i got to know through project, so after that i use to appreciate a lot from my whole heart , i maybe tell you , appreciated you multiple times.' },
+      { text: 'I started feeling the purest bond between us two , i use to love your presence , i love to sit with you , i love to work on project with you , i started enjoying your company and i started feeling very very comfortable.' }
+    ],
+    signature: 'Yours ♥',
+    photo: './assests/photo3.jpeg',
+    photoCaption: 'Never thought these two people with different vibes will meet!',
+    video: './assests/video3.mp4',
+    videoCaption: 'My lil puppyyy'
+  },
   // {
-  //   num: 'III',
+  //   num: 'IV',
   //   name: 'The Long Walks',
   //   icon: '✧',
   //   date: 'Those endless evenings',
@@ -104,26 +124,6 @@ const CHAPTERS = [
   //   photoCaption: 'Streets we made our own',
   //   video: '',
   //   videoCaption: 'An evening walk, captured'
-  // },
-  // {
-  //   num: 'IV',
-  //   name: 'Our Private Language',
-  //   icon: '♥',
-  //   date: 'Woven through all our days',
-  //   quote: '"Love creates its own dialect — one that can only be spoken between two people who have truly chosen each other."',
-  //   art: 'hearts',
-  //   salutation: 'My darling,',
-  //   paragraphs: [
-  //     { text: 'We have built, between us, an entire vocabulary. Words that mean twelve different things depending on how they are said. Glances that carry full sentences. A particular way you raise one eyebrow that means "I told you so" and also "I love you" simultaneously.', dropCap: true },
-  //     { text: 'There are the in-jokes so layered they have become mythology — references to references to references, the original incident now so buried in retelling that we can barely remember it, only that it made us laugh until we couldn\'t breathe.' },
-  //     { text: 'In a crowded room, a single look from you can say: are you okay? I see you. I know this is a lot. Let\'s leave soon. You\'re doing brilliantly. I\'m here. All of that, in a look.' },
-  //     { text: 'This is the intimacy that can\'t be faked or forced — the language that only grows from time and attention and choosing each other enough times that you begin to understand each other\'s grammar.' }
-  //   ],
-  //   signature: 'fluent in you ♥',
-  //   photo: '',
-  //   photoCaption: 'A look that said everything',
-  //   video: '',
-  //   videoCaption: 'Our greatest hits of laughter'
   // },
   // {
   //   num: 'V',
